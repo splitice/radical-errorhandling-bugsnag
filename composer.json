@@ -3,6 +3,7 @@
   "description" : "Bugsnag Error Handling for the Radical-PHP framework",
   "require" : {
     "php" : ">=5.4",
+    "bugsnag/bugsnag": "2.*",
     "splitice/radical-errorhandling" : "*"
   },
   "keywords" : [ "radical-php" ],
