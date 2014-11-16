@@ -4,10 +4,10 @@ namespace Radical\Core\ErrorHandling\Handlers;
 use Radical\Core\ErrorHandling\Errors\Internal\ErrorBase;
 use Radical\Core\ErrorHandling\Errors\Internal\ErrorException;
 
-class OutputErrorHandler extends ErrorHandlerBase {
+class BugsnagOutputErrorHandler extends ErrorHandlerBase {
 	const CLI_START = "[%s]%s\n";
-	const CLI_HANDLER = '\Radical\Core\ErrorHandling\Handlers\CLIOutputErrorHandler';
-	const WEB_HANDLER = '\Radical\Core\ErrorHandling\Handlers\WebOutputErrorHandler';
+	const CLI_HANDLER = '\Radical\Core\ErrorHandling\Handlers\BugsnagCLIOutputErrorHandler';
+	const WEB_HANDLER = '\Radical\Core\ErrorHandling\Handlers\BugsnagWebOutputErrorHandler';
 	private $handler;
 	
 	function __construct($is_cli = null){

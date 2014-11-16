@@ -6,7 +6,7 @@ use Radical\Core\ErrorHandling\Errors\Internal\ErrorBase;
 use Radical\Core\ErrorHandling\Errors\Internal\ErrorException;
 use Radical\CLI\Console\Colors;
 
-class CLIOutputErrorHandler extends ErrorHandlerBase {
+class BugsnagCLIOutputErrorHandler extends ErrorHandlerBase {
 	const CLI_START = "[%s]%s\n";
 	
 	private $in_error = false;
