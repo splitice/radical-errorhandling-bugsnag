@@ -11,6 +11,28 @@ class BugsnagCLIOutputErrorHandler extends BugsnagErrorHandlerBase {
 	
 	private $in_error = false;
 
+    function error(ErrorBase $error) {
+        if(!$error->isFatal()){
+            if($error instanceof PHPError){
+                switch($error->getErrno()){
+                    case E_COMPILE_WARNING:
+                    case E_CORE_WARNING:
+                    case E_USER_WARNING:
+                    case E_WARNING:
+                        \Radical\CLI\Output\Error::Warning($error->getMessage());
+                        break;
+                    case E_NOTICE:
+                    case E_STRICT:
+                    case E_USER_NOTICE:
+                    case E_USER_DEPRECATED:
+                    case E_DEPRECATED:
+                        \Radical\CLI\Output\Error::Notice($error->getMessage());
+                        break;
+                }
+            }
+        }
+        return parent::error($error);
+    }
 
 	function exception(ErrorException $error){
 		if($this->in_error){
