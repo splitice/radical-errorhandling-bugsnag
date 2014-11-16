@@ -6,20 +6,17 @@ use Radical\Core\ErrorHandling\Errors\Internal\ErrorBase;
 use Radical\Core\ErrorHandling\Errors\Internal\ErrorException;
 use Radical\CLI\Console\Colors;
 
-class BugsnagCLIOutputErrorHandler extends ErrorHandlerBase {
+class BugsnagCLIOutputErrorHandler extends BugsnagErrorHandlerBase {
 	const CLI_START = "[%s]%s\n";
 	
 	private $in_error = false;
 
-	function error(ErrorBase $error) {
-		if($error->isFatal()){
-			throw $error;
-		}
-	}
+
 	function exception(ErrorException $error){
 		if($this->in_error){
 			return;
 		}
+        parent::exception($error);
 		$this->in_error = true;
 		
 		$c = Colors::getInstance();

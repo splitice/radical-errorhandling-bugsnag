@@ -6,13 +6,9 @@ use Radical\Core\ErrorHandling\Errors\Internal\ErrorException;
 use Radical\Web\Page\Handler\PageRequest;
 use Radical\Web\Page\Controller\Error;
 
-class BugsnagWebOutputErrorHandler extends ErrorHandlerBase {
-	function error(ErrorBase $error) {
-		if($error->isFatal()){
-			throw $error;
-		}
-	}
+class BugsnagWebOutputErrorHandler extends BugsnagErrorHandlerBase {
 	function exception(ErrorException $error){
+        parent::exception($error);
 		if(ob_get_level()) ob_end_clean();
 		try {
 			\Radical\Web\Page\Handler::init();
