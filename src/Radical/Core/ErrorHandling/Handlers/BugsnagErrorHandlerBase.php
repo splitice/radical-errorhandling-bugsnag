@@ -28,6 +28,9 @@ abstract class BugsnagErrorHandlerBase extends ErrorHandlerBase {
 
     function exception(ErrorException $exception){
         $client = $this->getClient();
+        if($exception instanceof ExceptionError){
+            $exception = $exception->getException();
+        }
         $client->notifyException($exception);
     }
 

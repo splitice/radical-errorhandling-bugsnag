@@ -19,7 +19,7 @@ class BugsnagOutputErrorHandler extends ErrorHandlerBase {
      */
     private $client;
 	
-	function __construct($api_key, $is_cli = null){
+	function __construct(\Bugsnag_Client $client, $is_cli = null){
 		if($is_cli === null){
 			$is_cli = \Radical\Core\Server::isCLI();
 		}
@@ -29,7 +29,7 @@ class BugsnagOutputErrorHandler extends ErrorHandlerBase {
 		else
 			$c = self::WEB_HANDLER;
 
-        $this->client = new \Bugsnag_Client($api_key);
+        $this->client = $client;
 		$this->handler = new $c($this);
 	}
 

@@ -12,7 +12,7 @@ class BugsnagCLIOutputErrorHandler extends BugsnagErrorHandlerBase {
 	private $in_error = false;
 
     function error(ErrorBase $error) {
-        if(!$error->isFatal()){
+        //if(!$error->isFatal()){
             if($error instanceof PHPError){
                 switch($error->getErrno()){
                     case E_COMPILE_WARNING:
@@ -30,7 +30,7 @@ class BugsnagCLIOutputErrorHandler extends BugsnagErrorHandlerBase {
                         break;
                 }
             }
-        }
+        //}
         return parent::error($error);
     }
 
