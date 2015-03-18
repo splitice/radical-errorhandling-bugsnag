@@ -22,7 +22,7 @@ abstract class BugsnagErrorHandlerBase extends ErrorHandlerBase {
         $this->base = $base;
     }
 
-    protected function getClient(){
+    public function getClient(){
         return $this->base->getClient();
     }
 
