@@ -1,10 +1,10 @@
 <?php
 namespace Radical\Core\ErrorHandling\Handlers;
 
-use Radical\Core\ErrorHandling\IToCode;
+use Radical\CLI\Console\Colors;
 use Radical\Core\ErrorHandling\Errors\Internal\ErrorBase;
 use Radical\Core\ErrorHandling\Errors\Internal\ErrorException;
-use Radical\CLI\Console\Colors;
+use Radical\Core\ErrorHandling\IToCode;
 
 class BugsnagCLIOutputErrorHandler extends BugsnagErrorHandlerBase {
 	const CLI_START = "[%s]%s\n";
