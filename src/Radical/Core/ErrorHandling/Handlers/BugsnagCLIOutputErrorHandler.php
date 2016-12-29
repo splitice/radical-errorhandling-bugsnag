@@ -60,6 +60,7 @@ class BugsnagCLIOutputErrorHandler extends BugsnagErrorHandlerBase {
 			$message = ' '.$message;
 		}
 		$output = sprintf(static::CLI_START,$code,$message);
+		$message .= $error->getTraceOutput();
 		
 		//If Threaded include ThreadID
 		/*$T = Thread::current();
@@ -70,7 +71,7 @@ class BugsnagCLIOutputErrorHandler extends BugsnagErrorHandlerBase {
 		}*/
 		
 		//Output it
-		\Radical\CLI\Console\Colors::getInstance()->Output($output);
+		\Radical\CLI\Console\Colors::getInstance()->Output($message);
 		
 		//OB
 		if(ob_get_level()) ob_flush();
