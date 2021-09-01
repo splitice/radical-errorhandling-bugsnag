@@ -15,11 +15,11 @@ class BugsnagOutputErrorHandler extends ErrorHandlerBase {
 	private $handler;
 
     /**
-     * @var \Bugsnag_Client
+     * @var \Bugsnag\Client
      */
     private $client;
 	
-	function __construct(\Bugsnag_Client $client, $is_cli = null){
+	function __construct(\Bugsnag\Client $client, $is_cli = null){
 		if($is_cli === null){
 			$is_cli = \Radical\Core\Server::isCLI();
 		}
@@ -34,7 +34,7 @@ class BugsnagOutputErrorHandler extends ErrorHandlerBase {
 	}
 
     /**
-     * @return \Bugsnag_Client
+     * @return \Bugsnag\Client
      */
     function getClient(){
         return $this->client;
