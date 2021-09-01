@@ -38,7 +38,10 @@ abstract class BugsnagErrorHandlerBase extends ErrorHandlerBase {
         $client = $this->getClient();
 
         if($error instanceof PHPError) {
-            $client->errorHandler($error->getErrno(),$error->getErrorText(),$error->getErrorLocation()->file, $error->getErrorLocation()->line);
+            // Ugly hack for IMAP errors (these are impossible to filter any other way it seems)
+            if(strpos($error->getErrorText(), '[CLOSED] IMAP') === false) {
+                $client->errorHandler($error->getErrno(), $error->getErrorText(), $error->getErrorLocation()->file, $error->getErrorLocation()->line);
+            }
         }elseif(!$error instanceof ExceptionError){
             $client->notifyError('error', $error->getMessage());
         }
